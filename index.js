@@ -15,15 +15,15 @@ setInterval(() => {
   document.title = "Poke Bot Running | Facebook";
 
   Array.prototype.map.call(document.querySelectorAll("span .a8c37x1j"), v => {
-    if (v.innerHTML === pokeButtonText) {
-      let parentElement = v.closest(".ow4ym5g4");
-      let wrapperElement = parentElement.childNodes[0].childNodes[0].childNodes[0];
-      let name = wrapperElement.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].innerHTML;
-      let date = wrapperElement.childNodes[1].childNodes[0].innerHTML;
-      if (date.contains(todayText) || date.contains(yesterdayText)) {
-        v.click();
-        console.log("Poked", name + "!");
-      }
+    if (v.innerHTML != pokeButtonText) return
+
+    let parentElement = v.closest(".ow4ym5g4");
+    let wrapperElement = parentElement.childNodes[0].childNodes[0].childNodes[0];
+    let name = wrapperElement.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].innerHTML;
+    let date = wrapperElement.childNodes[1].childNodes[0].innerHTML;
+    if (date.contains(todayText) || date.contains(yesterdayText)) {
+      v.click();
+      console.log("Poked", name + "!");
     }
   })
 }, codeInterval * 1000);
